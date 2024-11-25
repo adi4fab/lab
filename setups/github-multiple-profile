@@ -1,0 +1,17 @@
+Setup multiple profles in github if you use same lap for work and study 
+
+- first create a fodler example "lab"
+- create a ssh key "ssh-keygen -t rsa -b 4096 -C "gmail@gmail.com""
+- copy the public key and save it in your github account 
+- edit your ssh config and add below lines 
+Host github-adi4fab
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_adi4fab // name of the public key 
+    IdentitiesOnly yes
+
+- cd ~/path/to/lab
+- git remote set-url origin git@github-adi4fab:adi4fab/lab.git
+- ssh -T github-adi4fab
+- Hi adi4fab! You've successfully authenticated, but GitHub does not provide shell access.
+
