@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  labels:
+    env: dev
+spec:
+  containers:
+    - name: nginx-webapp
+      image: nginx
+      resources:
+        limits:
+          memory: "64Mi"
+          cpu: "250m"
+      ports:
+        - containerPort: 80
