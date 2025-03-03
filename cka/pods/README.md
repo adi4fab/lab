@@ -1,0 +1,1 @@
+Create a pod with resource and limits and use volumes.

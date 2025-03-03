@@ -1,13 +1,14 @@
-apiVersion: v1
+
+apiVersion: v1 
 kind: Pod
-metadata:
-  name: webapp-pod
+metadata: 
+  name: podwithvolume
   labels:
     env: dev
 spec: 
   containers:
-    - name: nginx-container
-      image: nginx
+    - name: nginx
+      image: nginx 
       ports: 
         - containerPort: 80
       resources:
@@ -20,8 +21,9 @@ spec:
       volumeMounts:
         - mountPath: /usr/share/nginx/html
           name: nginx-volume
+          readOnly: true
   volumes:
     - name: nginx-volume
       hostPath:
         path: /Users/adi-dev-mac/dev-env/lab/cka/pods/html
-        type: Directory
+        type: Directory 
