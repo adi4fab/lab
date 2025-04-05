@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: frontend-deployment 
+spec: 
+  template: 
+    metadata:
+      name: frontend
+      labels: 
+        app: respondent-marketing-site
+    spec: 
+      containers:
+        - name: nginx
+          image: nginx
+          ports: 
+            - containerPort: 80
+          resources: 
+            requests:
+              cpu: "250m"       
+              memory: "128Mi"   
+            limits: 
+              cpu: "500m"       
+              memory: "256Mi"
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: nginx-volume
+              readOnly: true
+      volumes:
+        - name: nginx-volume
+          hostPath:
+            path: ""
+            type: Directory 
+           
+  replicas: 3
+  selector: 
+    matchLabels: 
+      app: respondent-marketing-site
